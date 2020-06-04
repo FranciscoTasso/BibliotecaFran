@@ -65,10 +65,21 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="author_graph_view">
+        <field name="name">author.graph</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <graph string="Cantidad de libros por autor">
+                <field name="name"/>
+                <field name="libro_cant" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="author_list_action">
         <field name="name">Autores</field>
         <field name="res_model">res.partner</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph</field>
     </record>
 
     <menuitem id="authors_menu" name="Autores" parent="bibliotecafran_menu" action="author_list_action"/>
@@ -82,8 +93,8 @@
                     <group string="Datos de la reserva">
                         <field name="name" readonly="1"/>
                         <field name="client_id" domain="[('is_cbiblioteca','=',True)]"/>
-                        <field name="libro_ids"/>
                         <field name="reserva_date"/>
+                        <field name="libro_ids"/>
                     </group>
                 </sheet>
             </form>

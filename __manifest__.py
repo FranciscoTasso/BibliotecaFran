@@ -25,6 +25,7 @@
     'data': [
         'data/ir_sequence.xml',
         'views/bibliotecafran.xml',
+        'reports/reports.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

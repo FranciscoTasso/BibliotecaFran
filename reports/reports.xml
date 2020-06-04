@@ -1,0 +1,33 @@
+<odoo>
+    <report
+        id="report_reservas"
+        model="bibliotecafran.reserva"
+        string="Reporte de reservas"
+        name="bibliotecafran.report_reserva_view"
+        file="bibliotecafran.report_reserva"
+        report_type="qweb-pdf" />
+
+    <template id="report_reserva_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h3>Codigo de la reserva:</h3>
+                        <p t-field="doc.name"/>
+                        <h2>Fecha de la reserva:</h2>
+                        <p t-field="doc.reserva_date"/>
+                        <h2>Cliente de la reserva:</h2>
+                        <p t-field="doc.client_id"/>
+                        <h2>Libros de la reserva:</h2>
+                        <ul>
+                            <t t-foreach="doc.libro_ids" t-as="libro">
+                                <li><p>Nombre del libro: </p> <span t-field="libro.name"/> <p> Descripcion del libro: </p> <span t-field="libro.description"/> </li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

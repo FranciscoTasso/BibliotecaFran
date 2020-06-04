@@ -8,6 +8,13 @@ class Author(models.Model):
     is_author=fields.Boolean(string="Es autor",default=False)
     libro_ids=fields.One2many('bibliotecafran.libro','author_id',string="Libros del autor")
 
+    libro_cant=fields.Integer(string="Cantidad de libros del autor",compute='_libro_cant',store=True)
+
+    @api.depends('libro_ids')
+    def _libro_cant(self):
+        for r in self:
+            r.libro_cant=len(r.libro_ids)
+
 class Reserva(models.Model):
     _name='bibliotecafran.reserva'
     _description = 'Biblioteca Fran Reservas'
@@ -39,4 +46,11 @@ class Libro(models.Model):
     date_published=fields.Date(string="Fecha de publicacion del libro")
 
     author_id=fields.Many2one('res.partner',string="Autor del libro")
+
+
+
+
+
+
+
 
