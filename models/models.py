@@ -30,12 +30,14 @@ class Reserva(models.Model):
             vals['name']=self.env['ir.sequence'].next_by_code('seq.reserva') or _('New')
         return super(Reserva,self).create(vals)
 
+
 class Cliente(models.Model):
     _inherit = 'res.partner'
     _description = 'Biblioteca Fran Clientes'
 
     is_cbiblioteca=fields.Boolean(string="Es cliente",default=False)
     reservas_ids=fields.One2many('bibliotecafran.reserva','client_id',string="Reservas del cliente")
+
 
 class Libro(models.Model):
     _name = 'bibliotecafran.libro'
