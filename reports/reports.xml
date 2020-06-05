@@ -19,11 +19,19 @@
                         <h2>Cliente de la reserva:</h2>
                         <p t-field="doc.client_id"/>
                         <h2>Libros de la reserva:</h2>
-                        <ul>
+                        <table>
+                            <tr style="border: 1px solid black">
+                                <th style="border: 1px solid black">Nombre del libro</th>
+                                <th style="border: 1px solid black">Descripcion del libro</th>
+                            </tr>
+
                             <t t-foreach="doc.libro_ids" t-as="libro">
-                                <li><p>Nombre del libro: </p> <span t-field="libro.name"/> <p> Descripcion del libro: </p> <span t-field="libro.description"/> </li>
+                               <tr style="border: 1px solid black">
+                                   <td style="border: 1px solid black"><p t-field="libro.name"/></td>
+                                   <td style="border: 1px solid black"><p t-field="libro.description"/></td>
+                              </tr>
                             </t>
-                        </ul>
+                        </table>
                     </div>
                 </t>
             </t>
